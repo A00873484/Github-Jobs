@@ -1,10 +1,14 @@
-import {
-    _getUsers,
-    _getQuestions,
-    _saveQuestion,
-    _saveQuestionAnswer,
-} from './_DATA.js'
+import appendToGet from './appendToGet'
+import axios from 'axios'
 
-export function search ({description, full_time, location}) {
-    return _saveQuestion(info)
+export async function searchForJobs ({ description, fulltime, location }) {
+  const res = await axios.get(`http://localhost:3001/github/jobs${appendToGet({ description, location, full_time: fulltime })}`)
+  console.log(res)
+  return res.data
+}
+
+export async function searchForJob (id) {
+  const res = await axios.get(`http://localhost:3001/github/job?id=${id}`)
+  console.log(res)
+  return res.data
 }
