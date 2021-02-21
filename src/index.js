@@ -1,13 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
 import App from './components/App'
 import reportWebVitals from './reportWebVitals'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import Reducer from './reducers'
+import Middleware from './middleware'
+
+import './styles/shards-dashboards.1.1.0.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+const store = createStore(Reducer, Middleware)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 )
 
