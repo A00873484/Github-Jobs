@@ -3,12 +3,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {
   Card,
-  CardHeader,
   CardBody,
   Form,
   FormGroup,
   FormInput,
-  FormCheckbox,
   Button
 } from 'shards-react'
 import { receiveJobs } from '../actions/jobs'
@@ -27,15 +25,9 @@ function InputBox ({ dispatch }) {
     })
   }
 
-  return <Card small className='h-100'>
-        {/* Card Header */}
-        <CardHeader className='border-bottom'>
-            <h6 className='m-0'>Search Jobs</h6>
-        </CardHeader>
-
+  return <Card small className='mb-4'>
         <CardBody className='d-flex flex-column'>
             <Form className='quick-post-form' onSubmit={searchClicked}>
-                {/* Title */}
                 <FormGroup>
                     <FormInput placeholder='Search' value={search} onChange={e => setSearch(e.target.value)}/>
                 </FormGroup>
@@ -44,14 +36,12 @@ function InputBox ({ dispatch }) {
                     <FormInput placeholder='Location' value={location} onChange={e => setLocation(e.target.value)}/>
                 </FormGroup>
 
-                <FormGroup>
-                    <FormCheckbox checked={fulltime} onClick={() => setFullTime(!fulltime)}>
-                        Full Time Only
-                    </FormCheckbox>
-                </FormGroup>
-
-                <FormGroup className='mb-0'>
-                    <Button theme='accent' type='submit'>
+                <FormGroup className='d-flex flex-row justify-content-between'>
+                    <label className='align-self-center'>
+                        <input id='fullTimeInputId' type='checkbox' onClick={() => setFullTime(!fulltime)}/>
+                        <span className='pl-2'>Full Time Only</span>
+                    </label>
+                    <Button theme='accent' type='submit' className='align-self-center'>
                         Go
                     </Button>
                 </FormGroup>

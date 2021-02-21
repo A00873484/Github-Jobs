@@ -1,31 +1,65 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
 import { propTypes } from 'react-bootstrap/esm/Image'
-import { searchForJob } from '../utils/api'
+import parse from 'html-react-parser'
+import {
+  Card,
+  CardHeader,
+  Col
+} from 'shards-react'
 
-function DetailsPage (props) {
-  const id = props.match.params.id
-  const [selected, setSelected] = useState({})
+function DetailsPage ({ job }) {
+  if (job.id !== 0) {
+    return (
+        <Col>
+        <Card small className='mb-4'>
+            <CardHeader>
+                <h6 className='m-0'>{job.company}</h6>
+            </CardHeader>
+                {/* Avatar */}
+                <div className=' mr-3'>
+                    <img src={job.company_logo} alt={job.company} />
+                </div>
+                {/* Content */}
+                <div className='blog-comments__content'>
+                    {/* Content :: Title */}
+                    <div className='blog-comments__meta text-mutes'>
+                    <a className='text-secondary' href={job.company_url}>
+                        {job.company_url}
+                    </a>{' '}
+                    on{' '}
+                    <div className='text-secondary' >
+                        {job.title}
+                    </div>
+                    <span className='text-mutes'>- {new Date(job.created_at).toDateString()}</span>
+                    </div>
 
-  useEffect(() => {
-    searchForJob(id).then(res => {
-      console.log(res)
-      setSelected(res)
-    })
-  }, [])
-
-  return (
-    <div>
-      <img
-        src={selected.company_logo}
-        alt={'Company Logo'}
-        className='logo'
-      />
-    </div>
-  )
+                    {/* Content :: Body */}
+                    {parse(job.description)}
+                </div>
+        </Card>
+        </Col>
+    )
+  }
+  return null
 }
 
 DetailsPage.propTypes = {
-  match: propTypes.object
+  job: propTypes.object
 }
 
-export default DetailsPage
+function mapStateToProps ({ jobs }, props) {
+  const { id } = props.match.params
+  console.log(id)
+  console.log(jobs[id])
+  if (!jobs[id]) {
+    props.history.push('/')
+    return { job: { id: 0 } }
+  } else {
+    return {
+      job: jobs[id]
+    }
+  }
+}
+
+export default connect(mapStateToProps)(DetailsPage)

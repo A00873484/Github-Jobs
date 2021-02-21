@@ -47,7 +47,7 @@ function Table ({ jobs, history }) {
 
 Table.propTypes = {
   jobs: PropTypes.array,
-  history: PropTypes.func
+  history: PropTypes.object
 }
 
 export default withRouter(Table)

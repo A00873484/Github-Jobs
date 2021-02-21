@@ -24,7 +24,7 @@ app.get('/github/jobs', async(req, res, next) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(response.data)
     } catch (error) {
-        console.log(error)
+      res.send(error)
     }
 })
 
@@ -35,6 +35,7 @@ app.get('/github/job', async(req, res, next) => {
       res.send(response.data)
   } catch (error) {
       console.log(error)
+      res.send(error)
   }
 })
 

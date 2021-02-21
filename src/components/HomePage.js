@@ -30,10 +30,9 @@ HomePage.propTypes = {
   jobs: PropTypes.array
 }
 
-function mapStateToProps ({ jobs = [] }) {
-  console.log(jobs)
+function mapStateToProps ({ jobs }) {
   return {
-    jobs
+    jobs: Object.keys(jobs).map(id => jobs[id])
   }
 }
 
