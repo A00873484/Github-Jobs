@@ -1,3 +1,6 @@
+Need work on 'Full Time Only'
+Need work on Unit Tests
+
 ### `yarn start`
 
 Runs the app in the development mode.\

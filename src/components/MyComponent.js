@@ -1,22 +1,19 @@
-import React from 'react'
-
-export default class MyComponent extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            isShown: true,
-        }
-    }
-
-    toggleIsShown = () => this.setState(({ isShown }) => ({ isShown: !isShown }))
-
-    render () {
-        const { isShown } = this.state
-        return (
-            <div>
-                <button onClick={this.toggleIsShown}>Toggle</button>
-                { isShown && <div>Text goes here</div> }
-            </div>
-        )
-    }
-}
+import React from "react"
+// import ReactDOM from "react-dom"
+import {connect} from 'react-redux'
+// import {addInputs, subtractInputs} from '../actions/calculatorActions'
+const mapStateToProps = (state) => ({
+  output:state.output
+})
+export class Home extends React.Component{
+ render(){
+  // let IntegerA,IntegerB,IntegerC,IntegerD;
+  return(
+   <div className="container">
+      ...... 
+      ....
+      ..
+   </div>
+  );
+ }
+}export default connect(mapStateToProps)(Home)

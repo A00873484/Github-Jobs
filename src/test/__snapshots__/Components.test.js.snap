@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JobsTable should contain passed in data 1`] = `ShallowWrapper {}`;
+
+exports[`SearchBox should contain 2 inputboxs, 1 checkbox, and 1 button  1`] = `ShallowWrapper {}`;

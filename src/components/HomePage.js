@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row } from 'shards-react'
 import JobsTable from './JobsTable'
-import InputBox from './InputBox'
+import SearchBox from './SearchBox'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PageTitle from './common/PageTitle'
@@ -14,7 +14,7 @@ function HomePage ({ jobs }) {
         <PageTitle title='Search' subtitle='Github Jobs' className='text-sm-left mb-3' />
       </Row>
         <Row>
-          <InputBox/>
+          <SearchBox/>
         </Row>
         <Row noGutters className='page-header py-4'>
           {
