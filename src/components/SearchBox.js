@@ -12,6 +12,7 @@ import {
 } from 'shards-react'
 import { receiveJobs } from '../actions/jobs'
 import { searchForJobs } from '../utils/api'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 
 function InputBox ({ dispatch }) {
   const [search, setSearch] = useState('')
@@ -20,8 +21,10 @@ function InputBox ({ dispatch }) {
 
   const searchClicked = (e) => {
     e.preventDefault()
+    dispatch(showLoading())
     searchForJobs({ description: search, location, fulltime }).then(res => {
       dispatch(receiveJobs(res))
+      dispatch(hideLoading())
     })
   }
 

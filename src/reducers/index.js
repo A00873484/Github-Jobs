@@ -4,5 +4,5 @@ import { loadingBarReducer } from 'react-redux-loading-bar'
 
 export default combineReducers({
   jobs,
-  loadingBarReducer
+  loadingBar: loadingBarReducer
 })

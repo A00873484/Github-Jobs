@@ -5,5 +5,7 @@ import { applyMiddleware } from 'redux'
 export default applyMiddleware(
   thunk,
   logger,
-  loadingBarMiddleware()
+  loadingBarMiddleware({
+    promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']
+  })
 )
